@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10ma Preentrega</title>
+
+    <!-- CSS de Toastify (CDN) -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <!-- Tu archivo de estilos propio (ajustá la ruta según dónde esté tu archivo) -->
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+    <button id="btn-tema" class="btn-tema">🌙 Modo Oscuro</button>
+
+    <h2>Gestor de Pedidos de llaveros</h2>
+    
+    <!-- Formulario de nuevo pedido -->
+    <form id="formulario-pedido">
+        <input type="text" id="input-cliente" placeholder="Nombre del cliente" required>
+        <input type="text" id="input-modelo" placeholder="Modelo de llavero" required>
+        <input type="number" id="input-cantidad" placeholder="Cantidad" min="1" required>
+        <button type="submit">Agregar Pedido</button>
+    </form>
+
+    <!-- Mensaje de feedback visual -->
+    <div id="mensaje-feedback" class="mensaje-feedback"></div>
+
+    <hr>
+
+    <div>
+        <input type="text" id="input-busqueda" placeholder="Buscar por cliente o modelo...">
+    </div>
+
+    <hr>
+
+    <!-- Contenedor / Tabla de pedidos -->
+    <div id="contenedor-pedidos"></div>
+
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    
+    <script src="JS/main.js"></script>
+</body>
+</html>

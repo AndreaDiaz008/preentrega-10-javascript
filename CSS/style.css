@@ -1,0 +1,292 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', 'Nunito', 'Segoe UI', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body {
+  background-color: #f7f3f6; /* Lila muy claro pastel */
+  color: #5a4b56;
+  padding: 32px 16px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* Botón para alternar tema */
+.btn-tema {
+  display: block;
+  margin-left: auto;
+  margin-bottom: 16px;
+  padding: 8px 16px;
+  background-color: #ebdbe5;
+  color: #6e4053;
+  border: 2px solid #d8b4c8;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(186, 154, 175, 0.2);
+}
+
+.btn-tema:hover {
+  background-color: #dfcbd8;
+}
+
+h1, h2 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: #6e4053; /* Bordó mate */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Formulario principal */
+#formulario-pedido {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 18px;
+  border: 2px solid #ebdbe5;
+  box-shadow: 0 4px 15px rgba(186, 154, 175, 0.15);
+  margin-bottom: 20px;
+}
+
+/* Inputs de texto y búsqueda */
+#formulario-pedido input,
+#input-busqueda {
+  padding: 12px 16px;
+  border: 1.5px solid #e3d3dd;
+  background-color: #faf7f9;
+  border-radius: 12px;
+  font-size: 14px;
+  color: #5a4b56;
+  outline: none;
+}
+
+#formulario-pedido input:focus,
+#input-busqueda:focus {
+  border-color: #c9a0b8;
+  background-color: #ffffff;
+}
+
+#formulario-pedido input {
+  flex: 1 1 180px;
+}
+
+/* Botón Agregar Pedido */
+#formulario-pedido button {
+  padding: 12px 24px;
+  background-color: #c295ad;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(194, 149, 173, 0.3);
+}
+
+#formulario-pedido button:hover {
+  background-color: #b0829a;
+}
+
+/* Barra de búsqueda */
+#input-busqueda {
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+/* Cuadrícula de pedidos */
+#contenedor-pedidos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 24px;
+}
+
+/* Tarjeta individual con borde bien marcado */
+.tarjeta-pedido {
+  background-color: #ffffff;
+  border: 3px solid #b87d9f; /* Borde rosa/lila marcado */
+  border-radius: 20px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(138, 79, 114, 0.18);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tarjeta-pedido:hover {
+  transform: translateY(-4px);
+  border-color: #9c5a7e;
+  box-shadow: 0 10px 24px rgba(138, 79, 114, 0.28);
+}
+
+.tarjeta-pedido h3 {
+  color: #7d445c;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.tarjeta-pedido p {
+  font-size: 14px;
+  color: #73646f;
+}
+
+/* Selector de estado */
+.select-estado {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1.5px solid #d8c3d0;
+  font-size: 13px;
+  color: #5a4b56;
+  background-color: #faf7f9;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Botón Eliminar */
+.btn-eliminar {
+  margin-top: auto;
+  padding: 8px 14px;
+  background-color: #9c5a6c;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.btn-eliminar:hover {
+  background-color: #854959;
+}
+
+hr {
+  display: none;
+}
+
+/* =======================================================
+   ESTILOS DE FEEDBACK VISUAL
+   ======================================================= */
+.mensaje-feedback {
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 14px;
+  display: none; /* Oculto por defecto */
+}
+
+/* Estado al agregar (Éxito) */
+.mensaje-feedback.exito {
+  display: block;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1.5px solid #c3e6cb;
+}
+
+/* Estado al eliminar (Advertencia) */
+.mensaje-feedback.eliminado {
+  display: block;
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1.5px solid #f5c6cb;
+}
+
+/* =======================================================
+   MODO OSCURO (Violeta intermedio y bordes pastel)
+   ======================================================= */
+body.dark-mode {
+  background-color: #3b2a47; /* Violeta mate, visible y no tan oscuro */
+  color: #f3e9f1;
+}
+
+body.dark-mode h1,
+body.dark-mode h2 {
+  color: #f7cad9;
+}
+
+body.dark-mode .btn-tema {
+  background-color: #4c375b;
+  color: #f7cad9;
+  border-color: #7b588e;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+body.dark-mode #formulario-pedido {
+  background-color: #483457;
+  border: 2px solid #6b4d7c;
+  box-shadow: 0 6px 20px rgba(35, 20, 45, 0.35);
+}
+
+body.dark-mode #formulario-pedido input,
+body.dark-mode #input-busqueda {
+  background-color: #30213b;
+  border: 1.5px solid #6b4d7c;
+  color: #ffffff;
+}
+
+body.dark-mode #formulario-pedido input:focus,
+body.dark-mode #input-busqueda:focus {
+  border-color: #f7cad9;
+  background-color: #382745;
+}
+
+body.dark-mode #formulario-pedido button {
+  background-color: #b06b97;
+  box-shadow: 0 2px 10px rgba(176, 107, 151, 0.35);
+}
+
+body.dark-mode #formulario-pedido button:hover {
+  background-color: #c27ba9;
+}
+
+/* Tarjeta individual en modo oscuro */
+body.dark-mode .tarjeta-pedido {
+  background-color: #483457;
+  border: 3px solid #e29dbb;
+  box-shadow: 0 8px 22px rgba(30, 16, 38, 0.4);
+}
+
+body.dark-mode .tarjeta-pedido:hover {
+  border-color: #f7cad9;
+  box-shadow: 0 12px 28px rgba(30, 16, 38, 0.55);
+}
+
+body.dark-mode .tarjeta-pedido h3 {
+  color: #f7cad9;
+}
+
+body.dark-mode .tarjeta-pedido p {
+  color: #ebdbe5;
+}
+
+body.dark-mode .select-estado {
+  background-color: #30213b;
+  border-color: #6b4d7c;
+  color: #ffffff;
+}
+
+body.dark-mode .btn-eliminar {
+  background-color: #8f4660;
+}
+
+body.dark-mode .btn-eliminar:hover {
+  background-color: #a85271;
+}
+
+/* Feedback en Modo Oscuro */
+body.dark-mode .mensaje-feedback.exito {
+  background-color: #23472e;
+  color: #a3e0b5;
+  border-color: #346643;
+}
+
+body.dark-mode .mensaje-feedback.eliminado {
+  background-color: #4d2328;
+  color: #f2a4ad;
+  border-color: #73333b;
+}

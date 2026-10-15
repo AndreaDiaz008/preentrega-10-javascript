@@ -1,0 +1,5 @@
+[
+  { "id": 1, "cliente": "Anahi Perez", "modelo": "Snoopy", "cantidad": 1, "estado": "Pendiente" },
+  { "id": 2, "cliente": "Jose Gonzales", "modelo": "Corazones", "cantidad": 2, "estado": "En producción" },
+  { "id": 3, "cliente": "Mariana Ruiz", "modelo": "Anime Custom", "cantidad": 3, "estado": "Listo para entrega" }
+]
