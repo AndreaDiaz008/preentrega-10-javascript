@@ -1,20 +1,20 @@
-// 1. Estado de la aplicación
+
 let pedidos = [];
 
-// Persistir cambios en localStorage
+
 function guardarPedidosEnStorage() {
     localStorage.setItem("pedidosLlaveros", JSON.stringify(pedidos));
 }
 
-// 2. Elementos del DOM
+
 const contenedorPedidos = document.getElementById('contenedor-pedidos');
 const datosPedidos = document.getElementById('formulario-pedido');
 const inputBusqueda = document.getElementById("input-busqueda");
 const botonTema = document.getElementById("btn-tema");
 
-// 3. Notificaciones con librería Toastify JS
+
 function notificar(mensaje, tipo = "info") {
-    let fondo = "#2563eb"; // color por defecto
+    let fondo = "#2563eb";
     if (tipo === "exito") fondo = "linear-gradient(to right, #00b09b, #96c93d)";
     if (tipo === "error") fondo = "linear-gradient(to right, #ff5f6d, #ffc371)";
     if (tipo === "aviso") fondo = "linear-gradient(to right, #f2994a, #f2c94c)";
@@ -33,7 +33,7 @@ function notificar(mensaje, tipo = "info") {
     }).showToast();
 }
 
-// 4. Renderizado en el DOM con desestructuración y ternarios
+
 function renderizarPedidos(lista) {
     contenedorPedidos.innerHTML = "";
 
@@ -64,7 +64,7 @@ function renderizarPedidos(lista) {
             <button class="btn-eliminar">Eliminar</button>
         `;
 
-        // Evento eliminar
+
         const botonEliminar = tarjeta.querySelector(".btn-eliminar");
         botonEliminar.addEventListener("click", () => {
             pedidos = pedidos.filter(item => item.id !== id);
@@ -73,7 +73,7 @@ function renderizarPedidos(lista) {
             notificar(`Pedido de ${cliente} eliminado.`, "aviso");
         });
 
-        // Evento cambio de estado
+     
         const selectEstado = tarjeta.querySelector(".select-estado");
         selectEstado.addEventListener("change", (e) => {
             pedido.estado = e.target.value;
@@ -85,19 +85,19 @@ function renderizarPedidos(lista) {
     });
 }
 
-// 5. Carga de datos con fetch, async/await y try/catch/finally
+
 async function cargarDatosIniciales() {
-    // Feedback visual mientras carga
+
     contenedorPedidos.innerHTML = `<p class="cargando">Cargando catálogo de pedidos...</p>`;
 
     try {
         const guardados = localStorage.getItem("pedidosLlaveros");
 
         if (guardados) {
-            // Si ya hay datos en Storage, los usamos
+
             pedidos = JSON.parse(guardados);
         } else {
-            // Si no hay Storage, consumimos el JSON local con fetch
+
             const respuesta = await fetch("./data.json");
             
             if (!respuesta.ok) {
@@ -115,15 +115,15 @@ async function cargarDatosIniciales() {
         notificar("Error al conectar con la fuente de datos.", "error");
         pedidos = [];
     } finally {
-        // Garantiza renderizar el DOM tanto en éxito como en fallo
+
         renderizarPedidos(pedidos);
     }
 }
 
-// Iniciar la carga al arrancar
+
 cargarDatosIniciales();
 
-// 6. Alta de nuevo pedido
+
 datosPedidos.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -152,7 +152,7 @@ datosPedidos.addEventListener('submit', (e) => {
     notificar(`¡Pedido de ${nombreCliente} registrado!`, "exito");
 });
 
-// 7. Búsqueda en tiempo real
+
 inputBusqueda.addEventListener("input", (e) => {
     const termino = e.target.value.toLowerCase();
     const pedidosFiltrados = pedidos.filter(pedido => 
@@ -162,7 +162,7 @@ inputBusqueda.addEventListener("input", (e) => {
     renderizarPedidos(pedidosFiltrados);
 });
 
-// 8. Modo oscuro con ternario
+
 const temaGuardado = localStorage.getItem("tema");
 if (temaGuardado === "dark") {
     document.body.classList.add("dark-mode");
